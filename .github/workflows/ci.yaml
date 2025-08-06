@@ -1,8 +1,8 @@
 name: type-node-app
 
 on:
- push:
-   branches: ["main"]
+  push:
+    branches: ["main"]
 
 jobs:
   lint:
@@ -28,7 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run test
 
-   build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
