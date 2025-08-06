@@ -113,7 +113,7 @@ app.get("/", (_, res) => {
           </div>
           <div class="feature-card">
             <h3>📤 API Ready</h3>
-            <p>RESTful structure makes integration with frontend seamless.</p>
+            <p>RESTful architecture makes integration with frontend seamless.</p>
           </div>
           <div class="feature-card">
             <h3>🌍 Deployed Anywhere</h3>
