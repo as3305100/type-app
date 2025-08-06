@@ -82,7 +82,7 @@ app.get("/", (_, res) => {
     </head>
     <body>
       <header>
-        <h1>🚀 My Beautiful Backend App</h1>
+        <h1>🚀 My Beautiful Backend Application</h1>
         <p>A fully working backend with Node.js + TypeScript + Express</p>
       </header>
 
