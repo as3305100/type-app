@@ -13,7 +13,7 @@ jobs:
        contents: write 
     env:
       IMAGE_NAME: as3305100/type-app
-      IMAGE_TAG: build-${{github.run_number}}
+      IMAGE_TAG: build-${{github.sha}}
      
      steps: 
        - name: checkout the source code
@@ -43,3 +43,31 @@ jobs:
            git add .
            git commit -m "bump the large version ${{env.IMAGE_TAG}}"
            git push
+
+  deploy: 
+    name: Deploy the image to Docker swarm cluster
+    runs-on: ubuntu-latest
+    env:
+     IMAGE_NAME: as3305100/type-app
+     IMAGE_TAG: build-${{github.sha}}
+    needs: 
+      - build-and-push
+    steps:
+      - name: SSH into the server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{secrets.SWARM_MANAGER_HOST}}
+          username: ${{secrets.SWARM_HOST_USERNAME}}
+          key: ${{secrets.SWARM_HOST_SSH_KEY}}
+          port: ${{secrets.SWARM_HOST_SSH_PORT}}
+          script: |
+            set -e
+            cd ~/type-app
+
+            #pull compose file using git
+            
+            git fetch origin main
+            git checkout origin/main
+
+            sudo docker pulldocker pull ${{env.IMAGE_NAME}}:${{env.IMAGE_TAG}}
+            sudo docker stack deploy -c compose.yaml my-type-app
