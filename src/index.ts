@@ -116,7 +116,7 @@ app.get("/", (_, res) => {
             <p>RESTful architecture makes integration with frontend seamless.</p>
           </div>
           <div class="feature-card">
-            <h3>🌍 Deployed Anywhere</h3>
+            <h3>🌍 Deployed in AWS</h3>
             <p>Docker-ready and deployable on Vercel, Render, Railway, or DigitalOcean.</p>
           </div>
         </div>
