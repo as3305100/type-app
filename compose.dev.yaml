@@ -30,6 +30,4 @@ services:
       - typeapp-network
 
 networks:
-  typeapp-network: null
-
-
+  typeapp-network:
