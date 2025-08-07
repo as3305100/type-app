@@ -117,7 +117,7 @@ app.get("/", (_, res: Response) => {
           </div>
           <div class="feature-card">
             <h3>🌍 Deployed in AWS</h3>
-            <p>Docker-ready and deployable on Vercel, Render, Railway, or DigitalOcean.</p>
+            <p>Docker-ready and deployable on AWS, Render, Railway, or DigitalOcean.</p>
           </div>
         </div>
       </section>
