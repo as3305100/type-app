@@ -1,9 +1,9 @@
-import express from "express";
+import express, { Request, Response } from "express";
 
 const app = express();
 const PORT = 3000;
 
-app.get("/", (_, res) => {
+app.get("/", (_, res: Response) => {
   res.send(`
     <!DOCTYPE html>
     <html lang="en">
@@ -130,10 +130,19 @@ app.get("/", (_, res) => {
   `);
 });
 
-app.get("/api", (_, res) => {
+app.get("/api", (_, res: Response) => {
   res.json({
     message: "✅ Backend is working perfectly!",
     status: "OK",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+app.get("/health", (req: Request, res: Response) => {
+  console.log("Server is running fine")
+  res.status(200).json({
+    status: "ok",
+    uptime: process.uptime(),
     timestamp: new Date().toISOString(),
   });
 });
